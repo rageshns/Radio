@@ -3,7 +3,7 @@ package ru.netology;
 public class Radio {
 
     private int currentStation;
-    int volume;
+    private int volume;
 
 
     public int getCurrentStation() {
@@ -24,8 +24,8 @@ public class Radio {
         if (currentStation < 9) {
             currentStation = currentStation + 1;
         }
-        if (currentStation == 9) {
-            currentStation = 0;
+        else  {
+                currentStation = 0;
         }
     }
 
@@ -33,8 +33,8 @@ public class Radio {
         if (currentStation > 0) {
             currentStation = currentStation - 1;
         }
-        if (currentStation == 0) {
-            currentStation = 9;
+        else {
+                currentStation = 9;
         }
     }
 

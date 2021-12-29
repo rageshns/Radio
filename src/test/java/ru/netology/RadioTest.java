@@ -20,10 +20,10 @@ class RadioTest {
     @Test
     void shouldCheckNextStationIfSetCurrentStationLessNine() {
         Radio radio = new Radio();
-        radio.setCurrentStation(0);
+        radio.setCurrentStation(8);
         radio.nextStation();
 
-        int expected = 1;
+        int expected = 9;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
@@ -56,10 +56,10 @@ class RadioTest {
     @Test
     void shouldCheckPrevStationIfSetCurrentStationAboveZero() {
         Radio radio = new Radio();
-        radio.setCurrentStation(9);
+        radio.setCurrentStation(1);
         radio.prevStation();
 
-        int expected = 8;
+        int expected = 0;
         int actual = radio.getCurrentStation();
 
         assertEquals(expected, actual);
