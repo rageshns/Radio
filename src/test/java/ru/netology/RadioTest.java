@@ -6,113 +6,100 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
     Radio radio = new Radio();
-    Radio radio1 = new Radio(21);
+    Radio radio1 = new Radio(20);
 
     @Test
-    void shouldCheckNumberOfStationsRadio1() {
-
-        assertEquals(21, radio1.getNumberOfStations());
+    void shouldChekSetCurrentStationIsNumberOfStations() {
+        radio.setCurrentStation(10);
+        assertEquals(10, radio.getCurrentStation());
     }
 
     @Test
-    void shouldCheckIfSetNumberOfStationsLessNine() {
-        radio.setNumberOfStations(1);
-
-        assertEquals(9, radio.getNumberOfStations());
-    }
-
-    @Test
-    void shouldCheckIfSetNumberOfStationsAboveNine() {
-        radio.setNumberOfStations(10);
-
-        assertEquals(9, radio.getNumberOfStations());
-    }
-
-    @Test
-    void shouldCheckIfSetNumberOfStationsIsNine() {
-        radio.setNumberOfStations(9);
-
-        assertEquals(9, radio.getNumberOfStations());
-    }
-
-    @Test
-    void shouldCheckNextStationRadio1IfSerCurrentStationIsZero() {
-        radio1.setCurrentStation(0);
-        radio1.nextStation();
-
-        assertEquals(1, radio1.getCurrentStation());
-    }
-
-    @Test
-    void shouldCheckNextStationRadio1IfSerCurrentStationIsTwentyOne() {
+    void shouldChekSetCurrentStationOverNumbersOfStations() {
         radio1.setCurrentStation(21);
-        radio1.nextStation();
-
         assertEquals(0, radio1.getCurrentStation());
     }
 
     @Test
-    void shouldCheckNextStationIfSetCurrentStationAboveNine() {
-        radio.setCurrentStation(10);
+    void shouldCheckSetCurrentStationLessZero() {
+        radio.setCurrentStation(-1);
+        assertEquals(0, radio.getCurrentStation());
+    }
+
+    @Test
+    void shouldCheckSetNumberOfStationsLessZero() {
+        radio1.setNumberOfStations(-1);
+        assertEquals(20, radio1.getNumberOfStations());
+    }
+
+    @Test
+    void shouldCheckSetNumberOfStationsAboveZero() {
+        radio1.setNumberOfStations(1);
+        assertEquals(1, radio1.getNumberOfStations());
+    }
+
+    @Test
+    void shouldCheckNextStationWhenCurrentStationIsZero() {
+        radio.setCurrentStation(0);
         radio.nextStation();
 
         assertEquals(1, radio.getCurrentStation());
     }
 
     @Test
-    void shouldCheckNextStationIfSetCurrentStationLessNine() {
-        radio.setCurrentStation(8);
-        radio.nextStation();
-
-        assertEquals(9, radio.getCurrentStation());
-    }
-
-    @Test
-    void shouldCheckNextStationIfSetCurrentStationIsNine() {
-        radio.setCurrentStation(9);
+    void shouldCheckNextStationWhenCurrentStationIsNumberOfStations() {
+        radio.setCurrentStation(10);
         radio.nextStation();
 
         assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
-    void shouldCheckPrevStationRadio1IfSetCurrentStationIsTwentyOne() {
+    void shouldCheckNextStationWhenCurrentStationAboveNumberOfStations() {
         radio1.setCurrentStation(21);
-        radio1.prevStation();
+        radio1.nextStation();
 
-        assertEquals(20, radio1.getCurrentStation());
+        assertEquals(1, radio1.getCurrentStation());
     }
 
     @Test
-    void shouldCheckPrevStationRadio1IfSetCurrentStationIsZero() {
-        radio1.setCurrentStation(0);
-        radio1.prevStation();
+    void shouldCheckNextStationWhenCurrentStationInTheMiddle() {
+        radio.setCurrentStation(5);
+        radio.nextStation();
 
-        assertEquals(21, radio1.getCurrentStation());
+        assertEquals(6, radio.getCurrentStation());
     }
 
     @Test
-    void shouldCheckPrevStationIfSetCurrentStationLessZero() {
-        radio.setCurrentStation(-1);
-        radio.prevStation();
-
-        assertEquals(9, radio.getCurrentStation());
-    }
-
-    @Test
-    void shouldCheckPrevStationIfSetCurrentStationAboveZero() {
-        radio.setCurrentStation(1);
-        radio.prevStation();
-
-        assertEquals(0, radio.getCurrentStation());
-    }
-
-    @Test
-    void shouldCheckPrevStationIfSetCurrentStationIsZero() {
+    void shouldCheckPrevStationWhenCurrentStationIsZero() {
         radio.setCurrentStation(0);
         radio.prevStation();
 
-        assertEquals(9, radio.getCurrentStation());
+        assertEquals(10, radio.getCurrentStation());
+    }
+
+    @Test
+    void shouldCheckPrevStationWhenCurrentStationIsNumberOfStations() {
+        radio1.setCurrentStation(20);
+        radio1.prevStation();
+
+        assertEquals(19, radio1.getCurrentStation());
+    }
+
+    @Test
+    void shouldCheckPrevStationWhenCurrentStationAboveNumberOfStations() {
+        radio.setCurrentStation(11);
+        radio.prevStation();
+
+        assertEquals(10, radio.getCurrentStation());
+    }
+
+    @Test
+    void shouldCheckPrevStationWhenCurrentStationInTheMiddle() {
+        radio.setCurrentStation(6);
+        radio.prevStation();
+
+        assertEquals(5, radio.getCurrentStation());
     }
 
     @Test
