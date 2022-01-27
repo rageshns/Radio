@@ -1,6 +1,7 @@
 package ru.netology;
 
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
@@ -10,7 +11,7 @@ class RadioTest {
     @Test
     void shouldCheckNumberOfStationsRadio1() {
 
-        assertEquals(21,radio1.getNumberOfStations() );
+        assertEquals(21, radio1.getNumberOfStations());
     }
 
     @Test
@@ -74,13 +75,13 @@ class RadioTest {
         assertEquals(0, radio.getCurrentStation());
     }
 
-   @Test
-   void shouldCheckPrevStationRadio1IfSetCurrentStationIsTwentyOne() {
-       radio1.setCurrentStation(21);
-       radio1.prevStation();
+    @Test
+    void shouldCheckPrevStationRadio1IfSetCurrentStationIsTwentyOne() {
+        radio1.setCurrentStation(21);
+        radio1.prevStation();
 
-       assertEquals(20, radio1.getCurrentStation());
-   }
+        assertEquals(20, radio1.getCurrentStation());
+    }
 
     @Test
     void shouldCheckPrevStationRadio1IfSetCurrentStationIsZero() {
@@ -140,9 +141,10 @@ class RadioTest {
 
     @Test
     void shouldCheckDecreaseVolumeIfSetCurrentVolumeLessZero() {
-        radio.setVolume (-1);
+        radio.setVolume(-1);
         radio.decreaseVolume();
 
         assertEquals(0, radio.getVolume());
     }
+
 }
