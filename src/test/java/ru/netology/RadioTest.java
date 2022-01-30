@@ -88,7 +88,7 @@ class RadioTest {
 
     @Test
     void shouldCheckPrevStationWhenCurrentStationAboveNumberOfStations() {
-        radio.setCurrentStation(11);
+        radio.setCurrentStation(12);
         radio.prevStation();
 
         assertEquals(10, radio.getCurrentStation());
